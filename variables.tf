@@ -7,5 +7,5 @@ variable "resource_group_location" {
 }
 
 variable "prefix" {
-  description = "this prefix is used for all resources"
+  default = "tfpoccontainer"
 }
