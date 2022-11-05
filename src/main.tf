@@ -5,7 +5,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>2.0"
+      version = "~>3.0"
     }
   }
 }
@@ -19,17 +19,20 @@ resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location 
 }
 
-resource "azurerm_container_group" "aci-test" {
+resource "azurerm_container_group" "aci-helloworld" {
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
   name                = "${var.prefix}-container01"
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
-  ip_address_type     = "public"
+  ip_address_type     = "Public"
   dns_name_label      = "${var.prefix}-container"
-  os_type             = "linux"
+  os_type             = "Linux"
 
   container {
     name   = "hello"
-    image  = "microsoft/aci-helloworld:latest"
+    image  = "mcr.microsoft.com/azuredocs/aci-helloworld:latest"
     cpu    = "0.5"
     memory = "1.5"
 

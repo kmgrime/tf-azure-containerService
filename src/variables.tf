@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  default = "terraformPOC"
+  default = "tf-container-poc"
 }
 
 variable "resource_group_location" {
@@ -7,5 +7,5 @@ variable "resource_group_location" {
 }
 
 variable "prefix" {
-  default = "tfpoccontainer"
+  default = "tf-container"
 }
